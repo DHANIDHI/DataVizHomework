@@ -1,0 +1,52 @@
+
+
+Sub StockData()
+    
+    lastrow = Cells(Rows.Count, 1).End(xlUp).Row
+    
+  Dim Ticker As String
+  
+  
+  Dim Stock_Volume As Double
+  Stock_Volume = 0
+        
+               
+        'Cells(1, "I").Value = "Ticker"
+        'Cells(1, "J").Value = "Stock_Volume"
+      
+        
+        Dim Column As Integer
+        Column = 2
+        
+         
+    For i = 2 To lastrow
+        
+             
+            If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+                
+                Ticker = Cells(i, 1).Value
+                
+                Stock_Volume = Stock_Volume + Cells(i, 7).Value
+                
+                
+      Range("I" & Column).Value = Ticker
+      
+      
+      Range("J" & Column).Value = Stock_Volume
+      
+      Column = Column + 1
+      
+      Stock_Volume = 0
+      
+      Else
+
+    
+      Stock_Volume = Stock_Volume + Cells(i, 7).Value
+       
+                  
+                  End If
+        
+        Next i
+        
+                
+End Sub
